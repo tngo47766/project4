@@ -56,7 +56,7 @@ console.log(photos);
             />
             <CardMedia
               component="img"
-              image={`../images/${photo.file_name}`}
+              image={require(`../../images/${photo.file_name}`)}
               alt={photo.file_name}
             />
             <CardContent>
