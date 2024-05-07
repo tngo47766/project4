@@ -9,27 +9,31 @@ import {
   Card,
   CardHeader,
   CardMedia,
-  CardContent
+  CardContent,
 } from "@mui/material";
 import { fetchModel } from "../../lib/fetchModelData"; // Assuming fetchModel is implemented here
 
 const UserPhotos = () => {
   const [photos, setPhotos] = useState([]);
   const [user, setUser] = useState(null);
-  const { userId } = useParams(); 
+  const { userId } = useParams();
 
   useEffect(() => {
     const fetchData = async () => {
-      const userPhotos = await fetchModel(`http://localhost:8081/api/photo/photosOfUser/${userId}`);
-      
-      const userInfo = await fetchModel(`http://localhost:8081/api/user/${userId}`);
+      const userPhotos = await fetchModel(
+        `https://nwkwd3-8081.csb.app/api/photo/photosOfUser/${userId}`,
+      );
+
+      const userInfo = await fetchModel(
+        `https://nwkwd3-8081.csb.app/api/user/${userId}`,
+      );
       setPhotos(userPhotos || []);
       setUser(userInfo);
     };
 
     fetchData();
   }, [userId]);
-console.log(photos);
+  console.log(photos);
   const linkToAuthor = user ? (
     <Link to={`/users/${user._id}`}>
       {`${user.first_name} ${user.last_name}`}
@@ -48,8 +52,9 @@ console.log(photos);
               subheader={photo.date_time}
               avatar={
                 user && (
-                  <Avatar style={{ backgroundColor: '#FF7F50' }}>
-                    {user.first_name[0]}{user.last_name[0]}
+                  <Avatar style={{ backgroundColor: "#FF7F50" }}>
+                    {user.first_name[0]}
+                    {user.last_name[0]}
                   </Avatar>
                 )
               }
@@ -81,9 +86,7 @@ console.log(photos);
                     >
                       {c.date_time}
                     </Typography>
-                    <Typography variant="body1">
-                      {`"${c.comment}"`}
-                    </Typography>
+                    <Typography variant="body1">{`"${c.comment}"`}</Typography>
                   </List>
                 ))}
             </CardContent>
