@@ -1,4 +1,15 @@
 .topbar-appBar {
   height: 60;
-  justify-content: "center";
+  justify-content: space-between;
 }
+/* App.css */
+.logout-button {
+  margin-left: 10px; 
+  background: white; 
+  border: '1px solid black' ;
+}
+/* .upload-button{
+  margin-left: 10px; 
+  background: white; 
+  border: '1px solid black' ;
+} */

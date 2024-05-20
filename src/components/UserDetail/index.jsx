@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import { useParams } from "react-router-dom";
 import { fetchModel } from "../../lib/fetchModelData";
-
+import { path } from "../../host";
 function UserDetail() {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
@@ -13,10 +13,10 @@ function UserDetail() {
     const fetchUser = async () => {
       try {
         const userData = await fetchModel(
-          `https://nwkwd3-8081.csb.app/api/user/${userId}`,
+          `${path}api/user/${userId}`,
         );
         setUser(userData);
-        console.log(userData);
+        // console.log(userData);
       } catch (error) {
         console.error("Error fetching user:", error);
       }

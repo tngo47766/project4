@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { List, ListItem, ListItemText } from "@mui/material";
 import "./styles.css";
 import { fetchModel } from "../../lib/fetchModelData";
-
+import { path } from "../../host";
 class UserList extends React.Component {
   constructor(props) {
     super(props);
@@ -13,7 +13,7 @@ class UserList extends React.Component {
   }
 
   componentDidMount = async () => {
-    const users = await fetchModel("https://nwkwd3-8081.csb.app/api/user/list");
+    const users = await fetchModel(`${path}api/user/list`);
     this.setState({ users });
   };
   render() {
@@ -25,6 +25,7 @@ class UserList extends React.Component {
           component={Link}
           key={user._id}
           divider
+          className="user-list-item"
         >
           <ListItemText primary={user.first_name + " " + user.last_name} />
         </ListItem>

@@ -1,0 +1,9 @@
+.user-list-item {
+    color: inherit; /* Inherit color from parent or set to a specific color */
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  .user-list-item:hover {
+    text-decoration: underline; /* Optional: add underline on hover for better UX */
+  }
+  
